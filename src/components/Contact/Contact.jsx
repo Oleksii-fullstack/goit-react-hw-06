@@ -1,8 +1,11 @@
 import { AiFillPhone } from "react-icons/ai";
 import { FaUserSecret } from "react-icons/fa";
 import s from "./Contact.module.css";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice";
 
-const Contact = ({ name, number, id, deleteContact }) => {
+const Contact = ({ name, number, id }) => {
+  const dispatch = useDispatch();
   return (
     <div className={s.contactCard}>
       <div className={s.contactInfo}>
@@ -18,7 +21,7 @@ const Contact = ({ name, number, id, deleteContact }) => {
       <button
         className={s.deleteButton}
         type="button"
-        onClick={() => deleteContact(id)}
+        onClick={() => dispatch(deleteContact(id))}
       >
         Delete
       </button>
